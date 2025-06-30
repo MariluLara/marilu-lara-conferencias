@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>María Lara - Conferencista de Valores</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FDF2F8; /* Rosa muy pálido, casi blanco */
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        /* Estilos específicos para el contenedor del gráfico de radar para darle más espacio */
+        .radar-chart-container {
+            max-width: 650px; /* Más ancho para las etiquetas radiales */
+            height: 400px; /* Más altura para las etiquetas radiales */
+        }
+        @media (min-width: 768px) {
+            .radar-chart-container {
+                height: 450px; /* Altura para pantallas medianas y grandes */
+            }
+        }
+        .kpi-card {
+            background-color: white;
+            border-radius: 0.75rem;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            transition: transform 0.3s ease;
+        }
+        .kpi-card:hover {
+            transform: translateY(-5px);
+        }
+        .kpi-number {
+            font-size: 4rem;
+            font-weight: 900;
+            line-height: 1;
+            color: #FF1493; /* Deep Pink (Rosa vibrante) */
+        }
+        .kpi-label {
+            margin-top: 0.5rem;
+            color: #8B008B; /* Dark Magenta (Magenta oscuro para texto principal) */
+            font-size: 1.125rem;
+        }
+        .flowchart-step {
+            border: 2px solid;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            text-align: center;
+            font-weight: bold;
+        }
+        .flowchart-arrow {
+            font-size: 2.5rem;
+            color: #8B008B; /* Dark Magenta */
+        }
+    </style>
+</head>
+<body class="text-[#8B008B]">
+
+    <!-- Palette: Rosas Vibrantes (Deep Pink, Hot Pink, Violet, Dark Magenta) -->
+    <!-- #FDF2F8 (fondo), #FF1493 (Deep Pink), #FF69B4 (Hot Pink), #EE82EE (Violet), #8B008B (Dark Magenta/texto) -->
+    <!-- Confirmation: NEITHER Mermaid JS NOR SVG were used in this file. All visuals are generated via Chart.js Canvas or styled HTML/CSS. -->
+
+    <div class="container mx-auto p-4 md:p-8 max-w-7xl">
+
+        <header class="text-center my-12">
+            <h1 class="text-4xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#FF1493] to-[#FF69B4]">Marilú Lara</h1>
+            <p class="mt-4 text-xl md:text-2xl font-bold">Inspirando con Datos y Corazón</p>
+            <p class="mt-2 text-lg max-w-3xl mx-auto">Con una trayectoria única que une la precisión analítica de una Actuaria y la calidez humana de una Formadora, ofrezco conferencias que transforman y te encaminan hacia la felicidad plena.</p>
+        </header>
+
+        <main class="space-y-16">
+
+            <section id="kpis">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold">Una Trayectoria de Impacto en Cifras</h2>
+                    <p class="mt-2 text-md max-w-2xl mx-auto">Cada número representa años de dedicación, vidas tocadas y comunidades fortalecidas. Estos son los pilares de mi experiencia.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="kpi-card">
+                        <div class="kpi-number">15</div>
+                        <div class="kpi-label">Años de Formación y Acompañamiento de Adolescentes y Jóvenes</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-number">10</div>
+                        <div class="kpi-label">Años de Formación de Matrimonios</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-number">3</div>
+                        <div class="kpi-label">Comunidades de Matrimonios Fundadas</div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="experience-breakdown">
+                <div class="bg-white rounded-lg shadow-md p-6 md:p-8">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                        <div>
+                            <h2 class="text-3xl font-bold mb-4">Distribución de Experiencia Formativa</h2>
+                            <p class="mb-6">Mi vocación se ha desarrollado en dos áreas fundamentales: la formación y acompañamiento de adolescentes y matrimonios. Ambas experiencias se complementan para ofrecer una visión integral del desarrollo humano y la familia en distintas etapas de la vida, con la firme creencia de que si podemos transformar la sociedad en que vivimos. Esta gráfica muestra los años dedicados a cada una de estas pasiones.</p>
+                            <div class="flex flex-col space-y-4">
+                                <div class="flex items-center">
+                                    <span class="w-5 h-5 rounded-full bg-[#FF1493] mr-3"></span>
+                                    <span>Formación y Acompañamiento de Adolescentes</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <span class="w-5 h-5 rounded-full bg-[#FF69B4] mr-3"></span>
+                                    <span>Mentoría y Acompañamiento a Matrimonios</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="experienceDonutChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="skills">
+                <div class="bg-white rounded-lg shadow-md p-6 md:p-8">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                         <div class="chart-container radar-chart-container order-last lg:order-first">
+                            <canvas id="skillsRadarChart"></canvas>
+                        </div>
+                        <div class="order-first lg:order-last">
+                            <h2 class="text-3xl font-bold mb-4">Un Conjunto de Habilidades Equilibrado</h2>
+                            <p>Para ser una Comunicadora efectiva, se requiere una mezcla de habilidades técnicas y humanas. Mi perfil combina la capacidad de comunicar con claridad y estructura (producto de mi carrera actuarial) con la empatía y la habilidad para conectar genuinamente con la audiencia. Este radar muestra el balance de mis competencias clave.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="synergy">
+                 <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold">La Sinergia Perfecta: Mente Analítica y Corazón Formador</h2>
+                    <p class="mt-2 text-md max-w-3xl mx-auto">Mi propuesta de valor reside en la fusión de dos mundos aparentemente distintos. Esta combinación me permite ofrecer conferencias que no solo inspiran y propician la reflexión, sino que también proporcionan herramientas claras y estructuradas para el crecimiento personal y familiar.</p>
+                </div>
+                <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-0">
+                    <div class="flowchart-step border-[#FF1493] text-[#FF1493] w-full md:w-1/3">
+                        <span class="text-4xl">🧠</span>
+                        <p class="mt-2">Mente Analítica </p>
+                         <ul class="text-sm list-disc list-inside mt-2 font-normal text-left">
+                            <li>Estructura y Claridad</li>
+                            <li>Comunicación Efectiva</li>
+                            <li>Resolución de Problemas</li>
+                        </ul>
+                    </div>
+                    <div class="flowchart-arrow mx-4">+</div>
+                    <div class="flowchart-step border-[#FF69B4] text-[#FF69B4] w-full md:w-1/3">
+                        <span class="text-4xl">❤️</span>
+                        <p class="mt-2">Corazón Formador </p>
+                        <ul class="text-sm list-disc list-inside mt-2 font-normal text-left">
+                            <li>Empatía y Conexión</li>
+                            <li>Experiencia de Vida</li>
+                            <li>Guía y Mentoría</li>
+                        </ul>
+                    </div>
+                </div>
+                 <div class="flex justify-center my-4">
+                    <div class="flowchart-arrow transform rotate-90 md:rotate-0">→</div>
+                </div>
+                 <div class="flowchart-step border-[#EE82EE] text-[#EE82EE] bg-[#EE82EE] bg-opacity-10 w-full md:w-1/2 mx-auto">
+                    <span class="text-4xl">🎙️</span>
+                    <p class="mt-2">Conferencias Únicas y de Alto Impacto</p>
+                     <p class="text-sm font-normal mt-2">Mensajes inspiradores con herramientas prácticas y aplicables.</p>
+                </div>
+            </section>
+            
+            <section id="topics">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold">Temas de Conferencia</h2>
+                    <p class="mt-2 text-md max-w-2xl mx-auto">Mis charlas están diseñadas para ser reflexivas, prácticas y profundamente humanas, adaptadas a las necesidades de cada audiencia.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h3 class="font-bold text-xl text-[#FF1493]">Para Matrimonios</h3>
+                        <p class="mt-2">Comunicación efectiva, resolución de conflictos, fortalecimiento del vínculo y valores en la vida conyugal.</p>
+                    </div>
+                     <div class="bg-white rounded-lg shadow-md p-6">
+                        <h3 class="font-bold text-xl text-[#FF69B4]">Para Madres y Padres</h3>
+                        <p class="mt-2">Educando con amor y límites, fomentando la autoestima en los hijos, y navegando los retos de la crianza moderna.</p>
+                    </div>
+                     <div class="bg-white rounded-lg shadow-md p-6">
+                        <h3 class="font-bold text-xl text-[#EE82EE]">Para Jóvenes</h3>
+                        <p class="mt-2">Descubrimiento de la vocación, toma de decisiones, inteligencia emocional y construcción de un proyecto de vida con valores.</p>
+                    </div>
+                </div>
+            </section>
+            
+        </main>
+        
+        <footer class="text-center mt-16 py-8 border-t border-gray-200">
+            <h2 class="text-3xl font-bold">¿Listo para Inspirar a tu Audiencia?</h2>
+            <p class="mt-4 text-lg">Contáctame para llevar una conferencia transformadora a tu comunidad, escuela o empresa.</p>
+            <!-- Slogan añadido y estilizado aquí -->
+            <p class="mt-4 mb-6 text-2xl md:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#FF1493] to-[#FF69B4]">Juntos podemos transformar nuestra sociedad</p>
+            <div class="mt-6">
+                 <a href="mailto:marilularaconferencias@gmail.com?subject=Consulta%20sobre%20Conferencias&body=Buen día%20Marilú%20Lara,%0A%0AMe%20interesa%20saber%20más%20sobre%20tus%20conferencias.%0A%0AAtentamente," class="bg-gradient-to-r from-[#FF1493] to-[#FF69B4] text-white font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-xl transition-shadow">¡Hablemos!</a>
+            </div>
+        </footer>
+
+    </div>
+
+    <script>
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            }
+            return label;
+        };
+        
+        const wrapLabel = (label, maxWidth = 16) => {
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            words.forEach(word => {
+                if ((currentLine + ' ' + word).trim().length > maxWidth) {
+                    lines.push(currentLine.trim());
+                    currentLine = word;
+                } else {
+                    currentLine = (currentLine + ' ' + word).trim();
+                }
+            });
+            if (currentLine) {
+                lines.push(currentLine.trim());
+            }
+            return lines;
+        };
+
+        const commonOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    callbacks: {
+                        title: tooltipTitleCallback
+                    },
+                    backgroundColor: '#8B008B', /* Dark Magenta */
+                    titleFont: { size: 16 },
+                    bodyFont: { size: 14 },
+                    padding: 12,
+                    cornerRadius: 8
+                }
+            }
+        };
+
+        const experienceData = {
+            labels: ['Formación y acompañamiento a Jóvenes (15 años)', 'Formación de Matrimonios (10 años)'],
+            datasets: [{
+                label: 'Años de Experiencia',
+                data: [15, 10],
+                backgroundColor: [
+                    '#FF1493', /* Deep Pink */
+                    '#FF69B4'  /* Hot Pink */
+                ],
+                borderColor: '#FDF2F8', /* Rosa muy pálido para el borde */
+                borderWidth: 4,
+                hoverOffset: 8
+            }]
+        };
+
+        new Chart(document.getElementById('experienceDonutChart'), {
+            type: 'doughnut',
+            data: experienceData,
+            options: { ...commonOptions }
+        });
+
+        const skillsData = {
+            labels: [
+                wrapLabel('Mentoría con acompañamiento humano', 18),
+                wrapLabel('Liderazgo inspiracional', 18),
+                wrapLabel('Empatía profunda', 18),
+                wrapLabel('Escucha activa', 18),
+                wrapLabel('Diseño de procesos formativos', 18),
+                wrapLabel('Facilitación grupal significativa', 18)
+            ],
+            datasets: [{
+                label: 'Nivel de Habilidad',
+                data: [10, 9, 10, 9, 9.5, 9],
+                fill: true,
+                backgroundColor: 'rgba(238, 130, 238, 0.2)', /* Violet con opacidad */
+                borderColor: '#EE82EE', /* Violet */
+                pointBackgroundColor: '#EE82EE', /* Violet */
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: '#EE82EE' /* Violet */
+            }]
+        };
+
+        new Chart(document.getElementById('skillsRadarChart'), {
+            type: 'radar',
+            data: skillsData,
+            options: {
+                ...commonOptions,
+                scales: {
+                    r: {
+                        angleLines: {
+                            color: 'rgba(139, 0, 139, 0.2)' /* Dark Magenta con opacidad */
+                        },
+                        grid: {
+                            color: 'rgba(139, 0, 139, 0.2)' /* Dark Magenta con opacidad */
+                        },
+                        pointLabels: {
+                            font: {
+                                size: 14,
+                                weight: 'bold'
+                            },
+                             color: '#8B008B', /* Dark Magenta */
+                             padding: 15 /* Aumenta el padding para separar las etiquetas del centro */
+                        },
+                        ticks: {
+                            backdropColor: 'transparent',
+                            color: 'rgba(139, 0, 139, 0.5)', /* Dark Magenta con opacidad */
+                            stepSize: 2,
+                            display: false
+                        },
+                        suggestedMin: 0,
+                        suggestedMax: 10
+                    }
+                },
+                plugins: {
+                    ...commonOptions.plugins,
+                    legend: { display: false }
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>
